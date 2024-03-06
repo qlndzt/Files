@@ -12,7 +12,6 @@ st.set_page_config(
 alt.themes.enable("dark")
 
 
-
 def createYM(df):
     c = 'month' if df.equals(resale_df) else 'rent_approval_date'
     df["year"] = df[c].str.split("-").str[0].astype(int)
@@ -45,7 +44,6 @@ with st.sidebar:
     selected_year = st.selectbox('Select a year', year_list, index=len(year_list) - 1)
     df_selected_year = curr_df[curr_df.year == selected_year]
     df_selected_year_sorted = df_selected_year.sort_values(by="town", ascending=False)
-
 
 transaction_counts = df_selected_year['town'].value_counts().reset_index()
 transaction_counts.columns = ['town', 'transactions']
